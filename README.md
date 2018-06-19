@@ -1,6 +1,6 @@
 # Site Pricipal PHP com Rapadura 
 
-![](https://i0.wp.com/phpcomrapadura.org/wp-content/uploads/2016/10/PHPcomRapadura.png?zoom=3&fit=200%2C60)
+![](https://i0.wp.com/phpcomrapadura.org/wp-content/uploads/2016/10/PHPcomRapadura.png)
 
 Projeto de Reformulação do site principal da comunidade de PHP do Ceará 
 
