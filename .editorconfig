@@ -12,3 +12,10 @@ trim_trailing_whitespace = true
 [*.md]
 insert_final_newline = false
 trim_trailing_whitespace = false
+
+# following the PSR-2 (https://www.php-fig.org/psr/psr-2/)
+[*.php]
+indent_size = 4
+
+[*.yml]
+indent_size = 2
