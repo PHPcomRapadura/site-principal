@@ -62,3 +62,12 @@ O Gitflow sugere o trabalho com os branches no seguinte fluxo de branches (fora 
   * git flow bugfix publish name-feature
   * git flow bugfix track name-feature
   * git flow bugfix finish name-feature
+  
+## Treinamentos/Estudos
+
+Caso você seja iniciante e/ou ainda não está habituado com essa metodologia, basta utilizar os links abaixo como referência para estudos:
+
+  * [[VIDEO] Fluxo de versionamento de software com git flow](https://www.youtube.com/watch?v=0L1zx7l6JSc) - Créditos: [Ateliê do Código](https://www.youtube.com/channel/UCJtkz7su6iT_jZva5RoSZiQ)
+  * [[VIDEO] Git flow na prática](https://www.youtube.com/watch?v=p1VAghNq-qg) - Créditos: [Janderson Almeida TI](https://www.youtube.com/channel/UCwU-2B-jnOX_3mz7NFsxO7g);
+  * [[ARTIGO] Utilizando o fluxo Git Flow](https://medium.com/trainingcenter/utilizando-o-fluxo-git-flow-e63d5e0d5e04) - Créditos: [Mikael Hadler](https://medium.com/@cabrito?source=post_header_lockup)
+  * [[ARTIGO] Cheatsheet do git-flow](http://danielkummer.github.io/git-flow-cheatsheet/index.pt_BR.html) - Créditos: [Daniel Kummer](https://github.com/danielkummer)
