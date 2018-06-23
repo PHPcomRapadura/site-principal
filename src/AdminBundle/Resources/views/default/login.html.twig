@@ -1,0 +1,35 @@
+{% extends '@Admin/base_login_admin.html.twig' %}
+
+{% block title %}Autenticação{% endblock %}
+
+{% block body_login_admin %}
+    <div class="animate form login_form">
+        <section class="login_content">
+            <form>
+                <h1>Área Administrativa</h1>
+                <div>
+                    <input type="email" class="form-control" placeholder="email@dominio.com.br" required />
+                </div>
+                <div>
+                    <input type="password" class="form-control" placeholder="Sua senha de acesso..." required />
+                </div>
+                <div>
+                    <a class="btn btn-default submit" href="index.html">Log in</a>
+                    <a class="reset_pass" href="#">Lost your password?</a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="separator">
+                    <div class="clearfix"></div>
+                    <br />
+
+                    <div>
+                        <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                        <p>©2016 All Rights Reserved. Gentelella Alela!</p>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+{% endblock %}

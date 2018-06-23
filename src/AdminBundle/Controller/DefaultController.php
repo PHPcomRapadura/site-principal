@@ -15,4 +15,13 @@ class DefaultController extends Controller
     {
         return [];
     }
+
+    /**
+     * @Route("/login", name="admin_default_login")
+     * @Template("@Admin/default/login.html.twig")
+     */
+    public function login()
+    {
+        return [];
+    }
 }
