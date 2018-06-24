@@ -20,6 +20,11 @@ Para dar start no projeto é só entrar no **diretório root** do projeto execut
 $ docker-compose up -d
 ```
 
+Para instalar as dependências pode usar o comando:
+```
+$ docker exec phpcomrapadura-app composer install
+```
+
 Se quiser parar a execução do projeto é só rodar o seguinte comando:
 ```
 $ docker-compose stop
