@@ -37,6 +37,7 @@ Thumbs.db
 
 # composer itself is not needed
 composer.phar
+/docker-compose.yml
 
 # Mac DS_Store Files
 .DS_Store
