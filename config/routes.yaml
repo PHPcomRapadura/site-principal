@@ -1,4 +1,0 @@
-admin:
-  resource: "@AdminBundle"
-  type: annotation
-  prefix: /admin

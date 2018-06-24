@@ -1,15 +1,20 @@
 <?php
-namespace App\AdminBundle\Controller;
+namespace App\Controller\Admin;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class DefaultController
+ * @package App\Controller\Admin
+ * @Route("/admin", name="admin_")
+ */
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="admin_default_index")
-     * @Template("@Admin/default/index.html.twig")
+     * @Route("/", name="default_index")
+     * @Template("/admin/default/index.html.twig")
      */
     public function index()
     {
@@ -17,8 +22,8 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/login", name="admin_default_login")
-     * @Template("@Admin/default/login.html.twig")
+     * @Route("/login", name="default_login")
+     * @Template("/admin/default/login.html.twig")
      */
     public function login()
     {
