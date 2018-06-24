@@ -1,32 +1,34 @@
-version: '2'
+version: '3'
 
 volumes:
-
-  mysql-data:
+  phpcomrapadura-mysql-data:
     driver: local
 
 services:
 
   mysql:
     image: mysql:5.7
-    container_name: mysql
+    container_name: ${DATABASE_HOST}
     volumes:
-      - mysql-data:/var/lib/mysql
+      - phpcomrapadura-mysql-data:/var/lib/mysql
     ports:
-      - "33066:3306"
+      - ${DOCKER_HOST_MYSQL}:3306
     environment:
       - MYSQL_ROOT_PASSWORD=secret
-      - MYSQL_DATABASE=phpcomrapadura
-      - MYSQL_USER=cababom
-      - MYSQL_PASSWORD=secret
+      - MYSQL_DATABASE=${DATABASE_DATABASE}
+      - MYSQL_USER=${DATABASE_USER}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD}
 
   app:
     image: ambientum/php:7.2-nginx
-    container_name: app
+#    build:
+#      dockerfile: ./.docker/app/Dockerfile
+#      context: .
+    container_name: phpcomrapadura-app
     volumes:
-      - ../:/var/www/app
+      - .:/var/www/app
     ports:
-      - "8000:8080"
+      - ${DOCKER_HOST_APP}:8080
     environment:
       - APP_ENV=dev
     links:
