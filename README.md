@@ -45,3 +45,7 @@ E pra quem usa School of Net tem esse minicurso [Iniciando com Docker](https://w
 ## Versionando o projeto
 
 Foi acordado de adotar a [**metodologia do git-flow**](https://danielkummer.github.io/git-flow-cheatsheet/index.pt_BR.html) para ajudar a [**versionar o projeto semanticamente**](https://semver.org/lang/pt-BR/). Sempre que houver uma dúvida quanto à isto. Sinta se à vontade para abrir uma [**issue**](https://github.com/PHPcomRapadura/site-principal/issues). Foi adicionado um pequeno resumo aqui no projeto. [[leia]](/docs/GITFLOW.md)
+
+## Convenções para Banco de Dados
+
+Deverá ser utilizado [ESTE GUIA](/docs/DATABASE.md) como base para nomenclaturas de tabelas, colunas, chaves estrangeiras e outros quesitos de banco de dados. Pode ser que haja algumas exceções, mas que as exceções sejam tratadas como **EXCEÇÕES**!
