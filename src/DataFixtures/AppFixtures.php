@@ -13,7 +13,7 @@ class AppFixtures extends Fixture
         $user = new Usuario();
         $user->setNome("Administrador");
         $user->setEmail("admin@phpcomrapadura.com.br");
-        $user->setPassword(password_hash('rapaduradopoder', PASSWORD_BCRYPT, ['cost'=>12]));
+        $user->setSenha('rapaduradopoder');
         $user->setGrupo("ROLE_ADMIN");
         $user->setStatus(1);
         $user->setCriadoEm(new \DateTime());

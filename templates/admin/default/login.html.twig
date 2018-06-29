@@ -12,13 +12,13 @@
         <section class="login_content">
             <br />
             <br />
-            <form  method="post" action="{{ path('admin_default_login') }}">
+            <form  method="post" action="{{ path('auth_default_login') }}">
                 <h1>Área Administrativa</h1>
                 <div>
-                    <input type="email" name="_username" class="form-control" placeholder="email@dominio.com.br" required />
+                    <input type="email" name="email" class="form-control" placeholder="email@dominio.com.br" required />
                 </div>
                 <div>
-                    <input type="password" name="_password" class="form-control" placeholder="Sua senha de acesso..." required />
+                    <input type="password" name="senha" class="form-control" placeholder="Sua senha de acesso..." required />
                 </div>
                 <div>
                     <button class="btn btn-default submit" type="submit">Log in</button>
