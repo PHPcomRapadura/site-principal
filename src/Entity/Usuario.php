@@ -33,7 +33,7 @@ class Usuario implements UserInterface
      * @var string
      * @ORM\Column(type="string")
      */
-    private $password;
+    private $senha;
 
     /**
      * @var array
@@ -110,9 +110,6 @@ class Usuario implements UserInterface
         return $this->nome;
     }
 
-    /**
-     * @var string
-     */
     public function getUsername()
     {
         return $this->email;
@@ -128,22 +125,16 @@ class Usuario implements UserInterface
         return $this->email;
     }
     
-    public function setPassword($password)
+    public function setSenha($senha)
     {
-        $this->password = $password;
+        $this->senha = password_hash($senha, PASSWORD_BCRYPT, ['cost'=>12]);
     }
 
-    /**
-     * @var string
-     */
     public function getPassword()
     {
-        return $this->password;
+        return $this->senha;
     }
 
-    /**
-     * @var array
-     */
     public function getRoles()
     {
         return $this->grupo;
@@ -249,17 +240,11 @@ class Usuario implements UserInterface
         return $this->removido_por;
     }
 
-    /**
-     * @var string\null
-     */
     public function getSalt()
     {
         return null;
     }
 
-    /**
-     * implements
-     */
     public function eraseCredentials()
     {
         return null;

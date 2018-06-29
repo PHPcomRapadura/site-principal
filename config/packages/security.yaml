@@ -20,6 +20,8 @@ security:
             form_login:
                 login_path: /admin/login
                 check_path: /admin/login
+                username_parameter: email
+                password_parameter: senha
                 default_target_path: admin_default_index
                 always_use_default_target_path: true
             # https://symfony.com/doc/current/security/form_login_setup.html
