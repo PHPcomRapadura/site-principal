@@ -35,11 +35,6 @@ Caso queria finalizar os serviços é só rodar o seguinte comando. Isso irá re
 $ docker-compose down
 ```
 
-> Segue duas **playlists** no **Youtube**, se você precisa se ambientar com o Docker. 
-Uma do [**PHP da Zona da Mata**](https://www.youtube.com/playlist?list=PLMpauGt6IneQxS46vhASvVh7wGLmMRuXO), 
-a segunda é do cara lá da [**Linux Tips**](https://www.youtube.com/playlist?list=PLf-O3X2-mxDk1MnJsejJwqcrDC5kDtXEb). 
-E pra quem usa School of Net tem esse minicurso [Iniciando com Docker](https://www.schoolofnet.com/curso-iniciando-com-docker-rev2/).
-
 > Segue duas **playlists** no **Youtube**, se você precisa se ambientar com o Docker. Uma do [**PHP da Zona da Mata**](https://www.youtube.com/playlist?list=PLMpauGt6IneQxS46vhASvVh7wGLmMRuXO), a segunda é do cara lá da [**Linux Tips**](https://www.youtube.com/playlist?list=PLf-O3X2-mxDk1MnJsejJwqcrDC5kDtXEb). E pra quem usa School of Net tem esse minicurso [Iniciando com Docker](https://www.schoolofnet.com/curso-iniciando-com-docker-rev2/).
 
 ## Versionando o projeto
@@ -48,4 +43,4 @@ Foi acordado de adotar a [**metodologia do git-flow**](https://danielkummer.gith
 
 ## Convenções para Banco de Dados
 
-Deverá ser utilizado [ESTE GUIA](/docs/DATABASE.md) como base para nomenclaturas de tabelas, colunas, chaves estrangeiras e outros quesitos de banco de dados. Pode ser que haja algumas exceções, mas que as exceções sejam tratadas como **EXCEÇÕES**!
+Deverá ser utilizado [**este guia**](/docs/DATABASE.md) como base para nomenclaturas de tabelas, colunas, chaves estrangeiras e outros quesitos de banco de dados. Pode ser que haja algumas exceções, mas que as exceções sejam tratadas como **exceções**!
