@@ -43,4 +43,4 @@ Foi acordado de adotar a [**metodologia do git-flow**](https://danielkummer.gith
 
 ## Convenções para Banco de Dados
 
-Deverá ser utilizado [ESTE GUIA](/docs/DATABASE.md) como base para nomenclaturas de tabelas, colunas, chaves estrangeiras e outros quesitos de banco de dados. Pode ser que haja algumas exceções, mas que as exceções sejam tratadas como **EXCEÇÕES**!
+Deverá ser utilizado [**este guia**](/docs/DATABASE.md) como base para nomenclaturas de tabelas, colunas, chaves estrangeiras e outros quesitos de banco de dados. Pode ser que haja algumas exceções, mas que as exceções sejam tratadas como **exceções**!
