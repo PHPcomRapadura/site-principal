@@ -61,7 +61,7 @@ class Usuario implements UserInterface
 
     /**
      * @var integer
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $status;
 
