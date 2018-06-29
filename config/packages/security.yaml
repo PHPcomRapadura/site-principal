@@ -1,5 +1,4 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         main:
             entity:
@@ -12,27 +11,17 @@ security:
         main:
             anonymous: true
 
-            # activate different ways to authenticate
-
-            # http_basic: true
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-
             form_login:
-                login_path: /admin/login
-                check_path: /admin/login
+                login_path: /auth/login
+                check_path: /auth/login
                 username_parameter: email
                 password_parameter: senha
                 default_target_path: admin_default_index
                 always_use_default_target_path: true
-            # https://symfony.com/doc/current/security/form_login_setup.html
             logout:
                 path: /logout
-                target: /admin/login
+                target: /auth/login
 
-
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
