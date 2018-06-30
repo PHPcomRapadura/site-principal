@@ -1,3 +1,7 @@
 .login_content div .reset_pass {
     float: none;
 }
+
+body.website {
+    background: url("../images/bg-nordestino.jpg");
+}
