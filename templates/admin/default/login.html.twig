@@ -15,14 +15,17 @@
             <form  method="post" action="{{ path('auth_default_login') }}">
                 <h1>Área Administrativa</h1>
                 <div>
-                    <input type="email" name="email" class="form-control" placeholder="email@dominio.com.br" required />
+                    <input type="email" name="email" class="form-control input-lg" placeholder="email@dominio.com.br" required />
                 </div>
                 <div>
-                    <input type="password" name="senha" class="form-control" placeholder="Sua senha de acesso..." required />
+                    <input type="password" name="senha" class="form-control input-lg" placeholder="Sua senha de acesso..." required />
                 </div>
-                <div>
-                    <button class="btn btn-default submit" type="submit">Log in</button>
-                    <a class="reset_pass" href="#">Lost your password?</a>
+
+                <div class="text-left">
+                    <button class="btn btn-primary btn-lg submit" type="submit">
+                        Entrar <i class="fa fa-sign-in"></i>
+                    </button>
+                    <a class="reset_pass" href="#">Esqueceu sua Senha?</a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -32,8 +35,11 @@
                     <br />
 
                     <div>
-                        <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                        <p>©2016 All Rights Reserved. Gentelella Alela!</p>
+                        <img src="{{asset('images/logo.png') }}" alt="PHP Com Rapadura" width="190" />
+                        <p style="margin-top: 10px">
+                            ©{{ "now"|date("Y") }} Todos os direitos reservados.<br />
+                            <strong>Comunidade PHP Com Rapadura</strong>
+                        </p>
                     </div>
                 </div>
             </form>

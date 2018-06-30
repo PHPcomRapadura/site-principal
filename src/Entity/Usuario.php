@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsuarioRepository")
@@ -66,8 +67,9 @@ class Usuario implements UserInterface
     private $status;
 
     /**
-     * @var datetime
+     * @var \DateTime
      * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $criado_em;
 
@@ -78,14 +80,16 @@ class Usuario implements UserInterface
     private $criado_por;
 
     /**
-     * @var datetime
+     * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
      */
     private $atualizado_em;
 
     /**
-     * @var datetime
+     * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="delete")
      */
     private $removido_em;
 
