@@ -1,4 +1,5 @@
 ## Convenções para Banco de Dados
+Foi convencionado que todos os nomes de tabelas, colunas, views e qualquer outro recurso do SGBD devem ser escrito em INGLÊS.
 
 ### Tabelas
 - Os nomes das tabelas devem ser **NO PLURAL** por parecer fazer sentido que um nome para um conjunto de linhas deva ser plural, ou seja, por ser um "conjunto de coisas";
@@ -12,9 +13,9 @@
 ### Colunas/Campos
 - Nomes de colunas sempre **NO SINGULAR**. Exceção da regra **PODE SER** uma coluna que represente algo que dê a menção de ser muitas coisas;
 
-- Colunas que representam uma Chave Estrangeira (FK) devem iniciar com o nome da "Tabela Estrangeira" no **SINGULAR** adicionando `_id`, por exemplo: `usuario_id`, `categoria_id` e `grupo_id`.
+- Colunas que representam uma Chave Estrangeira (FK) devem iniciar com o nome da "Tabela Estrangeira" no **SINGULAR** adicionando `_id`, por exemplo: `user_id`, `category_id` e `group_id`.
 
-- Exceção dessa regra são as colunas: `criado_por`, `atualizado_por` e `removido_por` que são chaves estrangeiras para a tabela `usuarios` e armazenam o ID do usuário de sua respectiva ação. 
+- Exceção dessa regra são as colunas: `created_by`, `updated_by` e `deleted_by` que são chaves estrangeiras para a tabela `users` e armazenam o ID do usuário de sua respectiva ação. 
 
 Fontes:
 
