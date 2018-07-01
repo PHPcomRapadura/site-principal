@@ -65,6 +65,7 @@ class DefaultController extends Controller
             }
 
             $this->addFlash('success', 'As Configurações do sistema foram salvas com sucesso!');
+            return $this->redirectToRoute('admin_settings');
         }
 
         return [

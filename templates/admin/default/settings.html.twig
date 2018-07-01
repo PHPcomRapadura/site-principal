@@ -39,39 +39,29 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                        Liberar a criação de POST's na área des membros
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div id="liberar-post" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-success active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                <input type="radio" name="" value="" data-parsley-multiple="gender" data-parsley-id="12">
-                                <i class="fa fa-check-circle"></i> SIM
-                            </label>
-                            <label class="btn btn-danger" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                <input type="radio" name="gender" value="female" data-parsley-multiple="gender">
-                                <i class="fa fa-ban"></i> NÃO
+                    <div class="col-md-offset-3 col-md-9 col-sm-9 col-xs-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="hidden" name="Setting[POSTAGEM_BLOG_ATIVA]" value="0">
+                                <input type="checkbox" {{ settings.POSTAGEM_BLOG_ATIVA.value == 1 ? 'checked' : '' }} value="1" name="Setting[POSTAGEM_BLOG_ATIVA]">
+                                {{ settings.POSTAGEM_BLOG_ATIVA.title }}
                             </label>
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                        Liberar a criação de Ofertas de Emprego na área de membros
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div id="liberar-post" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-success active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                <input type="radio" name="" value="" data-parsley-multiple="gender" data-parsley-id="12">
-                                <i class="fa fa-check-circle"></i> SIM
-                            </label>
-                            <label class="btn btn-danger" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                <input type="radio" name="gender" value="female" data-parsley-multiple="gender">
-                                <i class="fa fa-ban"></i> NÃO
+                    <div class="col-md-offset-3 col-md-9 col-sm-9 col-xs-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="hidden" name="Setting[POSTAGEM_VAGAS_ATIVA]" value="0">
+                                <input type="checkbox" {{ settings.POSTAGEM_VAGAS_ATIVA.value == 1 ? 'checked' : '' }} value="1" name="Setting[POSTAGEM_VAGAS_ATIVA]">
+                                {{ settings.POSTAGEM_VAGAS_ATIVA.title }}
                             </label>
                         </div>
                     </div>
                 </div>
+
                 <div class="ln_solid"></div>
                 <div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
