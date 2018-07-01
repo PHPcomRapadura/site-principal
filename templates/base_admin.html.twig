@@ -13,6 +13,7 @@
     <link href="{{ asset('/gentelella/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <link href="{{ asset('/gentelella/build/css/custom.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('/gentelella/vendors/datatable/css/dataTable.bootstrap.min.css') }}" rel="stylesheet">
     {% block stylesheets %}{% endblock %}
 </head>
 
@@ -56,6 +57,7 @@
                                         <li><a href="index3.html">Dashboard3</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="{{ path('admin_partner_list') }}"><i class="fa fa-home"></i> Parceiros </a></li>
                                 <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="form.html">General Form</a></li>
@@ -198,12 +200,6 @@
             <!-- page content -->
             <div class="right_col" role="main">
                 <div class="">
-                    <div class="page-title">
-                        <div class="title_left">
-                            <h3>{{ block('title') }}</h3>
-                        </div>
-                    </div>
-
                     <div class="clearfix"></div>
 
                     <div class="row">
@@ -231,6 +227,9 @@
     <script src="{{ asset('/gentelella/vendors/fastclick/lib/fastclick.js') }}"></script>
     <script src="{{ asset('/gentelella/vendors/nprogress/nprogress.js') }}"></script>
     <script src="{{ asset('/gentelella/build/js/custom.min.js') }}"></script>
+
+    <script src="{{ asset('/gentelella/vendors/datatable/js/jquery.dataTable.min.js') }}"></script>
+    <script src="{{ asset('/gentelella/vendors/datatable/js/dataTable.bootstrap.min.js') }}"></script>
     {% block javascript %}{% endblock %}
 </body>
 </html>
