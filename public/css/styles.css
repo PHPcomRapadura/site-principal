@@ -5,3 +5,25 @@
 body.website {
     background: url("../images/bg-nordestino.jpg");
 }
+
+div#social-media ul li {
+    display: inline;
+    margin-right: 17px;
+}
+
+div#social-media ul li:last-child{
+    display: inline;
+    margin-right: 0;
+}
+
+div#social-media ul {
+    padding: 0;
+}
+
+div#social-media ul li a {
+    color: #fff;
+}
+
+h1#title-message {
+    margin-top: 40px;
+}
