@@ -99,6 +99,11 @@ class Usuario implements UserInterface
      */
     private $removido_por;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Setting", mappedBy="updatedBy")
+     */
+    private $settings;
+
     public function getId()
     {
         return $this->id;
@@ -252,5 +257,23 @@ class Usuario implements UserInterface
     public function eraseCredentials()
     {
         return null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    /**
+     * @param mixed $settings
+     * @return Usuario
+     */
+    public function setSettings($settings)
+    {
+        $this->settings = $settings;
+        return $this;
     }
 }
