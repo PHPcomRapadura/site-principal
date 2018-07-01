@@ -1,0 +1,82 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Configurações do Sistema{% endblock %}
+
+{% block body_admin %}
+    <div class="x_panel">
+        <div class="x_content">
+            <form id="frm-data" data-parsley-validate novalidate class="form-horizontal form-label-left">
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                        URL da Fanpage da Comunidade
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control" id="" name="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                        URL do Twitter da Comunidade
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control" id="" name="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                        URL do Flickr da Comunidade
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control" id="" name="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                        URL do Github da comunidade
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control" id="" name="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                        Liberar a criação de POST's na área des membros
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div id="liberar-post" class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="" value="" data-parsley-multiple="gender" data-parsley-id="12"> &nbsp; SIM &nbsp;
+                            </label>
+                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="gender" value="female" data-parsley-multiple="gender"> NÃO
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                        Liberar a criação de Ofertas de Emprego na área de membros
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div id="liberar-post" class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="" value="" data-parsley-multiple="gender" data-parsley-id="12"> &nbsp; SIM &nbsp;
+                            </label>
+                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="gender" value="female" data-parsley-multiple="gender"> NÃO
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-save"></i> Salvar Configurações
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

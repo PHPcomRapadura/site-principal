@@ -20,4 +20,14 @@ class DefaultController extends Controller
     {
         return [];
     }
+
+    /**
+     * @Route("/settings", name="settings")
+     * @Template("admin/default/settings.html.twig")
+     * @return array
+     */
+    public function settings()
+    {
+        return [];
+    }
 }
