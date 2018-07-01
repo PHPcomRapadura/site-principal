@@ -183,7 +183,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
                                     <li><a href="javascript:;"> Perfil</a></li>
-                                    <li><a href="javascript:;"> Configurações</a></li>
+                                    <li><a href="{{ path('admin_settings') }}"> Configurações</a></li>
                                     <li>
                                         <a href="{{ path('logout') }}"><i class="fa fa-sign-out pull-right"></i> Sair</a>
                                     </li>
@@ -199,6 +199,36 @@
             <div class="right_col" role="main">
                 <div class="">
                     <div class="page-title">
+                        {% for flashMessage in app.session.flashbag.get('success') %}
+                            <div style="margin-top: 50px" class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h1 style="margin-top: 0">Tudo certo!</h1>
+                                <p style="font-size: 1.2em">{{ flashMessage }}</p>
+                            </div>
+                        {% endfor %}
+
+                        {% for flashMessage in app.session.flashbag.get('warning') %}
+                            <div style="margin-top: 50px" class="alert alert-warning">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h1 style="margin-top: 0">Atenção!</h1>
+                                <p style="font-size: 1.2em">{{ flashMessage }}</p>
+                            </div>
+                        {% endfor %}
+
+                        {% for flashMessage in app.session.flashbag.get('danger') %}
+                            <div style="margin-top: 50px" class="alert alert-danger">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h1 style="margin-top: 0">Ocorreu um erro!</h1>
+                                <p style="font-size: 1.2em">{{ flashMessage }}</p>
+                            </div>
+                        {% endfor %}
+
                         <div class="title_left">
                             <h3>{{ block('title') }}</h3>
                         </div>
