@@ -2,7 +2,7 @@ security:
     providers:
         main:
             entity:
-                class: App\Entity\Usuario
+                class: App\Entity\User
 
     firewalls:
         dev:
@@ -15,7 +15,7 @@ security:
                 login_path: /auth/login
                 check_path: /auth/login
                 username_parameter: email
-                password_parameter: senha
+                password_parameter: password
                 default_target_path: admin_default_index
                 always_use_default_target_path: true
             logout:
@@ -30,6 +30,6 @@ security:
         ROLE_ADMIN: ROLE_USER
 
     encoders:
-        App\Entity\Usuario:
+        App\Entity\User:
             algorithm: bcrypt
             cost: 12
