@@ -7,6 +7,7 @@
         <link rel="icon" href="{{ asset('/images/cropped-favicon.png?fit=192%2C192') }}" sizes="192x192" />
         <link rel="apple-touch-icon-precomposed" href="{{ asset('/images/cropped-favicon.png?fit=180%2C180') }}" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
         <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
         {% block stylesheets %}{% endblock %}
@@ -15,7 +16,35 @@
         <div class="container text-center">
             <div style="margin-top: 150px">
                 <img src="{{ asset('/images/logo.png') }}" alt="PHP Com Rapadura" width="800" />
-                <h1 style="margin-top: 10px" class="text-white">Novo Site em Desenvolvimento</h1>
+                <h1 id="title-message" class="text-white">Novo Site em Desenvolvimento</h1>
+            </div>
+
+            <hr>
+
+            <div id="social-media">
+                <h3 class="text-white">Redes Sociais</h3>
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/RAPADURAdoPoder">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/phpcomrapadura">
+                            <i class="fab fa-twitter-square"></i> Twitter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/PHPcomRapadura">
+                            <i class="fab fa-github-square"></i> GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.flickr.com/people/phpcomrapadura">
+                            <i class="fab fa-flickr"></i> Flickr
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
         {% block body %}{% endblock %}
