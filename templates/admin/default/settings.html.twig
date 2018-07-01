@@ -5,37 +5,37 @@
 {% block body_admin %}
     <div class="x_panel">
         <div class="x_content">
-            <form id="frm-data" data-parsley-validate novalidate class="form-horizontal form-label-left">
+            <form id="frm-data" method="post" data-parsley-validate novalidate class="form-horizontal form-label-left">
                 <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                        URL da Fanpage da Comunidade
+                        {{ settings.FACEBOOK_URL.title }}
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" class="form-control" id="" name="">
+                        <input type="text" value="{{ settings.FACEBOOK_URL.value }}" class="form-control" id="FACEBOOK_URL" name="Setting[FACEBOOK_URL]">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                        URL do Twitter da Comunidade
+                        {{ settings.TWITTER_URL.title }}
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" class="form-control" id="" name="">
+                        <input type="text" value="{{ settings.TWITTER_URL.value }}" class="form-control" id="TWITTER_URL" name="Setting[TWITTER_URL]">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                        URL do Flickr da Comunidade
+                        {{ settings.FLICKR_URL.title }}
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" class="form-control" id="" name="">
+                        <input type="text" value="{{ settings.FLICKR_URL.value }}" class="form-control" id="FLICKR_URL" name="Setting[FLICKR_URL]">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                        URL do Github da comunidade
+                        {{ settings.GITHUB_URL.title }}
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" class="form-control" id="" name="">
+                        <input type="text" value="{{ settings.GITHUB_URL.value }}" class="form-control" id="GITHUB_URL" name="Setting[GITHUB_URL]">
                     </div>
                 </div>
                 <div class="form-group">
@@ -44,11 +44,13 @@
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div id="liberar-post" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                <input type="radio" name="" value="" data-parsley-multiple="gender" data-parsley-id="12"> &nbsp; SIM &nbsp;
+                            <label class="btn btn-success active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="" value="" data-parsley-multiple="gender" data-parsley-id="12">
+                                <i class="fa fa-check-circle"></i> SIM
                             </label>
-                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                <input type="radio" name="gender" value="female" data-parsley-multiple="gender"> NÃO
+                            <label class="btn btn-danger" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="gender" value="female" data-parsley-multiple="gender">
+                                <i class="fa fa-ban"></i> NÃO
                             </label>
                         </div>
                     </div>
@@ -59,11 +61,13 @@
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div id="liberar-post" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                <input type="radio" name="" value="" data-parsley-multiple="gender" data-parsley-id="12"> &nbsp; SIM &nbsp;
+                            <label class="btn btn-success active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="" value="" data-parsley-multiple="gender" data-parsley-id="12">
+                                <i class="fa fa-check-circle"></i> SIM
                             </label>
-                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                <input type="radio" name="gender" value="female" data-parsley-multiple="gender"> NÃO
+                            <label class="btn btn-danger" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="gender" value="female" data-parsley-multiple="gender">
+                                <i class="fa fa-ban"></i> NÃO
                             </label>
                         </div>
                     </div>

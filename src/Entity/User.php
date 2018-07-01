@@ -90,7 +90,6 @@ class User implements UserInterface
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
-     * @Gedmo\Timestampable(on="delete")
      */
     private $deleted_at;
 
