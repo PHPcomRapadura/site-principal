@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Usuario;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -10,13 +10,14 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $user = new Usuario;
-        $user->setNome("Administrador");
+        $user = new User;
+        $user->setName("Administrador");
         $user->setEmail("admin@phpcomrapadura.com.br");
-        $user->setSenha('rapaduradopoder');
-        $user->setGrupo("ROLE_ADMIN");
-        $user->setStatus(1);
-        $user->setCriadoPor(1);
+        $user->setPassword('rapaduradopoder');
+        $user->setRoles("ROLE_ADMIN");
+        $user->setStatus(true);
+        $user->setCreatedAt(new \DateTime("now"));
+        $user->setCreatedBy(1);
 
         $manager->persist($user);
         $manager->flush();

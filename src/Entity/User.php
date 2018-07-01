@@ -7,9 +7,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UsuarioRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class Usuario implements UserInterface
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -22,7 +22,7 @@ class Usuario implements UserInterface
      * @var string
      * @ORM\Column(type="string")
      */
-    private $nome;
+    private $name;
 
     /**
      * @var string
@@ -34,13 +34,13 @@ class Usuario implements UserInterface
      * @var string
      * @ORM\Column(type="string")
      */
-    private $senha;
+    private $password;
 
     /**
      * @var array
      * @ORM\Column(type="json")
      */
-    private $grupo;
+    private $roles;
 
     /**
      * @var string
@@ -58,7 +58,7 @@ class Usuario implements UserInterface
      * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    private $sessao;
+    private $session_name;
 
     /**
      * @var integer
@@ -71,47 +71,47 @@ class Usuario implements UserInterface
      * @ORM\Column(type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
-    private $criado_em;
+    private $created_at;
 
     /**
      * @var integer
      * @ORM\Column(type="integer")
      */
-    private $criado_por;
+    private $created_by;
 
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
      * @Gedmo\Timestampable(on="update")
      */
-    private $atualizado_em;
+    private $updated_at;
 
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
      * @Gedmo\Timestampable(on="delete")
      */
-    private $removido_em;
+    private $deleted_at;
 
     /**
      * @var integer
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $removido_por;
+    private $deleted_by;
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function setNome($nome)
+    public function setName($name)
     {
-        $this->nome = $nome;
+        $this->name = $name;
     }
 
-    public function getNome()
+    public function getName()
     {
-        return $this->nome;
+        return $this->name;
     }
 
     public function getUsername()
@@ -129,29 +129,24 @@ class Usuario implements UserInterface
         return $this->email;
     }
     
-    public function setSenha($senha)
+    public function setPassword($password)
     {
-        $this->senha = password_hash($senha, PASSWORD_BCRYPT, ['cost'=>12]);
+        $this->password = password_hash($password, PASSWORD_BCRYPT, ['cost'=>12]);
     }
 
     public function getPassword()
     {
-        return $this->senha;
+        return $this->password;
     }
 
     public function getRoles()
     {
-        return $this->grupo;
+        return $this->roles;
     }
 
-    public function setGrupo($grupo)
+    public function setRoles($roles)
     {
-        $this->grupo[] = $grupo;
-    }
-
-    public function getGrupo()
-    {
-        return $this->grupo;
+        $this->roles[] = $roles;
     }
 
     public function setAvatar($avatar)
@@ -174,14 +169,14 @@ class Usuario implements UserInterface
         return $this->token;
     }
 
-    public function setSessao($sessao)
+    public function setSessionName($session_name)
     {
-        $this->sessao = $sessao;
+        $this->session_name = $session_name;
     }
 
-    public function getSessao()
+    public function getSessionName()
     {
-        return $this->sessao;
+        return $this->session_name;
     }
 
     public function setStatus($status)
@@ -194,54 +189,54 @@ class Usuario implements UserInterface
         return $this->status;
     }
 
-    public function setCriadoEm($criado_em)
+    public function setCreatedAt($created_at)
     {
-        $this->criado_em = $criado_em;
+        $this->created_at = $created_at;
     }
 
-    public function getCriadoEm()
+    public function getCreatedAt()
     {
-        return $this->criado_em;
+        return $this->created_at;
     }
 
-    public function setCriadoPor($criado_por)
+    public function setCreatedBy($created_by)
     {
-        $this->criado_por = $criado_por;
+        $this->created_by = $created_by;
     }
 
-    public function getCriadoPor()
+    public function getCreatedBy()
     {
-        return $this->criado_por;
+        return $this->created_by;
     }
 
-    public function setAtualizadoEm($atualizado_em)
+    public function setUpdatedAt($updated_at)
     {
-        $this->atualizado_em = $atualizado_em;
+        $this->updated_at = $updated_at;
     }
 
-    public function getAtualizadoEm()
+    public function getUpdatedAt()
     {
-        return $this->atualizado_em;
+        return $this->updated_at;
     }
 
-    public function setRemovidoEm($removido_em)
+    public function setDeletedAt($deleted_at)
     {
-        $this->removido_em = $removido_em;
+        $this->deleted_at = $deleted_at;
     }
 
-    public function getRemovidoEm()
+    public function getDeletedAt()
     {
-        return $this->removido_em;
+        return $this->deleted_at;
     }
 
-    public function setRemovidoPor($removido_por)
+    public function setDeletedBy($deleted_by)
     {
-        $this->removido_por = $removido_por;
+        $this->deleted_by = $deleted_by;
     }
 
-    public function getRemovidoPor()
+    public function getDeletedBy()
     {
-        return $this->removido_por;
+        return $this->deleted_by;
     }
 
     public function getSalt()
