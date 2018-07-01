@@ -8,7 +8,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180701024259 extends AbstractMigration
+final class Version20180701212559 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
@@ -16,7 +16,7 @@ final class Version20180701024259 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE settings (id INT AUTO_INCREMENT NOT NULL, updated_by INT NOT NULL, code VARCHAR(10) NOT NULL, title VARCHAR(60) NOT NULL, description VARCHAR(100) DEFAULT NULL, value LONGTEXT NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX IDX_E545A0C516FE72E1 (updated_by), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE settings ADD CONSTRAINT FK_E545A0C516FE72E1 FOREIGN KEY (updated_by) REFERENCES usuario (id)');
+        $this->addSql('ALTER TABLE settings ADD CONSTRAINT FK_E545A0C516FE72E1 FOREIGN KEY (updated_by) REFERENCES users (id)');
     }
 
     public function down(Schema $schema) : void

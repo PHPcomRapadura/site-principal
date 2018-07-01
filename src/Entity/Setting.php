@@ -20,7 +20,7 @@ class Setting
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=10, nullable=false)
+     * @ORM\Column(type="string", length=25, nullable=false)
      */
     private $code;
 
@@ -57,7 +57,7 @@ class Setting
     private $updated_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Usuario", inversedBy="settings")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="settings")
      * @ORM\JoinColumn(nullable=false, name="updated_by")
      */
     private $updatedBy;
