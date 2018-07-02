@@ -1,0 +1,36 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Parceiros{% endblock %}
+
+{% block body_admin %}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <div class="clearfix"></div>
+                    <div><a href="{{ path('admin_partner_create') }}" class="btn btn-success">Cadastrar</a></div>
+                </div>
+                <div class="x_content">
+                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Slug</th>
+                            <th>Tipo</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for partner in partners %}
+                            <tr>
+                                <td>{{ partner.name }}</td>
+                                <td>{{ partner.slug }}</td>
+                                <td>{{ partner.type }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
