@@ -15,8 +15,8 @@ final class Version20180701165629 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE users IF EXISTS users');
-        $this->addSql('DROP TABLE usuario IF EXISTS usuario');
+        $this->addSql('DROP TABLE IF EXISTS users');
+        $this->addSql('DROP TABLE IF EXISTS usuario');
     }
 
     public function down(Schema $schema) : void
