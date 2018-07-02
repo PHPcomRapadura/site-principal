@@ -7,6 +7,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PartnerRepository")
+ * @ORM\Table(name="partners")
  */
 class Partner
 {
@@ -43,7 +44,7 @@ class Partner
 
     /**
      * @var boolean
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", length=1)
      */
     private $status;
 
@@ -63,6 +64,8 @@ class Partner
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
+     *
      */
     private $updated_at;
 
@@ -70,7 +73,7 @@ class Partner
      * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $deletet_at;
+    private $deleted_at;
 
     /**
      * @var \DateTime
@@ -230,18 +233,18 @@ class Partner
     /**
      * @return \DateTime
      */
-    public function getDeletetAt(): \DateTime
+    public function getDeletedAt(): \DateTime
     {
-        return $this->deletet_at;
+        return $this->deleted_at;
     }
 
     /**
      * @param \DateTime $deletet_at
      * @return Partner
      */
-    public function setDeletetAt(\DateTime $deletet_at): Partner
+    public function setDeletedAt(\DateTime $deleted_at): Partner
     {
-        $this->deletet_at = $deletet_at;
+        $this->deleted_at = $deleted_at;
         return $this;
     }
 

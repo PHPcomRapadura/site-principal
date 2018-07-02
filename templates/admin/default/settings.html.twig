@@ -1,0 +1,76 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Configurações do Sistema{% endblock %}
+
+{% block body_admin %}
+    <div class="x_panel">
+        <div class="x_content">
+            <form id="frm-data" method="post" data-parsley-validate novalidate class="form-horizontal form-label-left">
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                        {{ settings.FACEBOOK_URL.title }}
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" value="{{ settings.FACEBOOK_URL.value }}" class="form-control" id="FACEBOOK_URL" name="Setting[FACEBOOK_URL]">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                        {{ settings.TWITTER_URL.title }}
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" value="{{ settings.TWITTER_URL.value }}" class="form-control" id="TWITTER_URL" name="Setting[TWITTER_URL]">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                        {{ settings.FLICKR_URL.title }}
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" value="{{ settings.FLICKR_URL.value }}" class="form-control" id="FLICKR_URL" name="Setting[FLICKR_URL]">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                        {{ settings.GITHUB_URL.title }}
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" value="{{ settings.GITHUB_URL.value }}" class="form-control" id="GITHUB_URL" name="Setting[GITHUB_URL]">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9 col-sm-9 col-xs-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="hidden" name="Setting[POSTAGEM_BLOG_ATIVA]" value="0">
+                                <input type="checkbox" {{ settings.POSTAGEM_BLOG_ATIVA.value == 1 ? 'checked' : '' }} value="1" name="Setting[POSTAGEM_BLOG_ATIVA]">
+                                {{ settings.POSTAGEM_BLOG_ATIVA.title }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9 col-sm-9 col-xs-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="hidden" name="Setting[POSTAGEM_VAGAS_ATIVA]" value="0">
+                                <input type="checkbox" {{ settings.POSTAGEM_VAGAS_ATIVA.value == 1 ? 'checked' : '' }} value="1" name="Setting[POSTAGEM_VAGAS_ATIVA]">
+                                {{ settings.POSTAGEM_VAGAS_ATIVA.title }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-save"></i> Salvar Configurações
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
