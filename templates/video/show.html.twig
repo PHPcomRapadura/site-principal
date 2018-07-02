@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Video{% endblock %}
+
+{% block body %}
+    <h1>Video</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ video.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ video.title }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ video.slug }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ video.description }}</td>
+            </tr>
+            <tr>
+                <th>Incorporation_code</th>
+                <td>{{ video.incorporationCode }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ video.status ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ video.updatedAt ? video.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Deleted_at</th>
+                <td>{{ video.deletedAt ? video.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('video_index') }}">back to list</a>
+
+    <a href="{{ path('video_edit', {'id': video.id}) }}">edit</a>
+
+    {{ include('video/_delete_form.html.twig') }}
+{% endblock %}
