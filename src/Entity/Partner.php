@@ -89,7 +89,7 @@ class Partner
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -98,16 +98,15 @@ class Partner
      * @param string $name
      * @return Partner
      */
-    public function setName(string $name): Partner
+    public function setName($name)
     {
         $this->name = $name;
-        return $this;
     }
 
     /**
      * @return string
      */
-    public function getSlug(): string
+    public function getSlug()
     {
         return $this->slug;
     }
@@ -116,16 +115,15 @@ class Partner
      * @param string $slug
      * @return Partner
      */
-    public function setSlug(string $slug): Partner
+    public function setSlug($slug)
     {
         $this->slug = $slug;
-        return $this;
     }
 
     /**
      * @return string
      */
-    public function getImage(): string
+    public function getImage()
     {
         return $this->image;
     }
@@ -134,16 +132,15 @@ class Partner
      * @param string $image
      * @return Partner
      */
-    public function setImage(string $image): Partner
+    public function setImage($image)
     {
         $this->image = $image;
-        return $this;
     }
 
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
@@ -152,16 +149,15 @@ class Partner
      * @param string $type
      * @return Partner
      */
-    public function setType(string $type): Partner
+    public function setType($type)
     {
         $this->type = $type;
-        return $this;
     }
 
     /**
      * @return bool
      */
-    public function isStatus(): bool
+    public function isStatus()
     {
         return $this->status;
     }
@@ -170,16 +166,15 @@ class Partner
      * @param bool $status
      * @return Partner
      */
-    public function setStatus(bool $status): Partner
+    public function setStatus($status)
     {
         $this->status = $status;
-        return $this;
     }
 
     /**
      * @return \DateTime
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt()
     {
         return $this->created_at;
     }
@@ -188,16 +183,15 @@ class Partner
      * @param \DateTime $created_at
      * @return Partner
      */
-    public function setCreatedAt(\DateTime $created_at): Partner
+    public function setCreatedAt($created_at)
     {
         $this->created_at = $created_at;
-        return $this;
     }
 
     /**
      * @return \DateTime
      */
-    public function getCreatedBy(): \DateTime
+    public function getCreatedBy()
     {
         return $this->created_by;
     }
@@ -206,16 +200,15 @@ class Partner
      * @param \DateTime $created_by
      * @return Partner
      */
-    public function setCreatedBy(\DateTime $created_by): Partner
+    public function setCreatedBy($created_by)
     {
         $this->created_by = $created_by;
-        return $this;
     }
 
     /**
      * @return \DateTime
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt()
     {
         return $this->updated_at;
     }
@@ -224,16 +217,15 @@ class Partner
      * @param \DateTime $updated_at
      * @return Partner
      */
-    public function setUpdatedAt(\DateTime $updated_at): Partner
+    public function setUpdatedAt($updated_at)
     {
         $this->updated_at = $updated_at;
-        return $this;
     }
 
     /**
      * @return \DateTime
      */
-    public function getDeletedAt(): \DateTime
+    public function getDeletedAt()
     {
         return $this->deleted_at;
     }
@@ -242,16 +234,15 @@ class Partner
      * @param \DateTime $deletet_at
      * @return Partner
      */
-    public function setDeletedAt(\DateTime $deleted_at): Partner
+    public function setDeletedAt($deleted_at)
     {
         $this->deleted_at = $deleted_at;
-        return $this;
     }
 
     /**
      * @return \DateTime
      */
-    public function getDeletedBy(): \DateTime
+    public function getDeletedBy()
     {
         return $this->deleted_by;
     }
@@ -260,9 +251,8 @@ class Partner
      * @param \DateTime $deleted_by
      * @return Partner
      */
-    public function setDeletedBy(\DateTime $deleted_by): Partner
+    public function setDeletedBy($deleted_by)
     {
         $this->deleted_by = $deleted_by;
-        return $this;
     }
 }
