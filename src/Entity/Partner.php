@@ -44,7 +44,7 @@ class Partner
 
     /**
      * @var boolean
-     * @ORM\Column(type="boolean", length=1)
+     * @ORM\Column(type="boolean")
      */
     private $status;
 
