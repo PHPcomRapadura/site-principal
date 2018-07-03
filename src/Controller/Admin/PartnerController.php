@@ -31,34 +31,67 @@ class PartnerController extends Controller
     }
 
     /**
-     * @Route("/create", name="partner_create")
+     * @Route("/create", name="partner_create", methods="GET|POST")
      * @Template("admin/partner/create.html.twig")
-     * @param Request $request
-     * @return array
      */
     public function create(Request $request)
     {
-        if ($request->getMethod() == 'POST') {
-            $name = $request->get('name');
-            $slug = $request->get('slug');
-            $type = $request->get('type');
+        $partner = new Partner();
+        $form = $this->createForm(PartnerType::class, $partner);
+        $form->handleRequest($request);
 
-            $partner = new Partner();
-            $partner->setName($name);
-            $partner->setSlug($slug);
-            $partner->setType($type == "1" ? "Patrocinador" : "Apoiador");
-            $partner->setCreatedAt(new \DateTime("now"));
+        if ($form->isSubmitted() && $form->isValid()) {
             $partner->setCreatedBy(new \DateTime("now"));
             $partner->setStatus(1);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($partner);
-            $entityManager->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($partner);
+            $em->flush();
 
             $this->addFlash('success', 'Parceiro foi salvo com sucesso!');
             return $this->redirectToRoute('admin_partner_list');
         }
 
-        return [];
+        return [
+            'partner' => $partner,
+            'form' => $form->createView(),
+        ];
+    }
+
+    /**
+     * @Route("/{id}/edit", name="partner_edit", methods="GET|POST")
+     * @Template("admin/partner/edit.html.twig")
+     */
+    public function edit(Request $request, Partner $partner)
+    {
+        $form = $this->createForm(PartnerType::class, $partner);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Parceiro foi atualizado com sucesso!');
+            return $this->redirectToRoute('admin_partner_list');
+        }
+
+        return [
+            'partner' => $partner,
+            'form' => $form->createView(),
+        ];
+    }
+
+    /**
+     * @Route("/{id}", name="partner_delete", methods="DELETE")
+     */
+    public function delete(Request $request, Partner $partner)
+    {
+        if ($this->isCsrfTokenValid('delete'.$partner->getId(), $request->request->get('_token'))) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($partner);
+            $em->flush();
+        }
+
+        $this->addFlash('success', 'Parceiro foi deletado com sucesso!');
+        return $this->redirectToRoute('admin_partner_list');
     }
 }
