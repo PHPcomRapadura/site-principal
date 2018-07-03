@@ -27,3 +27,7 @@ div#social-media ul li a {
 h1#title-message {
     margin-top: 40px;
 }
+
+.table > tbody > tr > td {
+    vertical-align: middle !important;
+}
