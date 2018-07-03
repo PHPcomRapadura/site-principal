@@ -1,0 +1,35 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}RapaduraTV{% endblock %}
+
+{% block body_admin %}
+    <a href="{{ path('admin_videos_new') }}">Create new</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 140px" class="text-center">Criado em</th>
+                <th>Título</th>
+                <th style="width: 100px" class="text-center">Status</th>
+                <th style="width: 100px" class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for video in videos %}
+            <tr>
+                <td class="text-center">{{ video.createdAt ? video.createdAt|date('d/m/Y H:i') : '' }}</td>
+                <td>{{ video.title }}</td>
+                <td class="text-center">{{ video.status ? 'Ativo' : 'Inativo' }}</td>
+                <td class="text-center">
+                    <a href="{{ path('admin_videos_show', {'id': video.id}) }}">show</a>
+                    <a href="{{ path('admin_videos_edit', {'id': video.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">Nenhum registro encontrado.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

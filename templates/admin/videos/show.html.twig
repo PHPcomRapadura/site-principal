@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block title %}Video{% endblock %}
 
-{% block body %}
+{% block body_admin %}
     <h1>Video</h1>
 
     <table class="table">
@@ -46,9 +46,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('video_index') }}">back to list</a>
+    <a href="{{ path('admin_videos_index') }}">back to list</a>
 
-    <a href="{{ path('video_edit', {'id': video.id}) }}">edit</a>
+    <a href="{{ path('admin_videos_edit', {'id': video.id}) }}">edit</a>
 
-    {{ include('video/_delete_form.html.twig') }}
+    {{ include('admin/videos/_delete_form.html.twig') }}
 {% endblock %}

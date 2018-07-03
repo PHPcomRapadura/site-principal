@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\VideoRepository")
@@ -65,21 +66,21 @@ class Video
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      * @Gedmo\Timestampable(on="update")
      */
     private $updated_at;
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $deleted_at;
 
     /**
      * @var User
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(name="deleted_by")
+     * @ORM\JoinColumn(name="deleted_by", nullable=true)
      */
     private $deleted_by;
 
@@ -91,7 +92,7 @@ class Video
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle():? string
     {
         return $this->title;
     }
@@ -109,7 +110,7 @@ class Video
     /**
      * @return string
      */
-    public function getSlug(): string
+    public function getSlug():? string
     {
         return $this->slug;
     }
@@ -127,7 +128,7 @@ class Video
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription():? string
     {
         return $this->description;
     }
@@ -145,7 +146,7 @@ class Video
     /**
      * @return string
      */
-    public function getIncorporationCode(): string
+    public function getIncorporationCode():? string
     {
         return $this->incorporation_code;
     }
@@ -156,14 +157,14 @@ class Video
      */
     public function setIncorporationCode(string $incorporation_code): Video
     {
-        $this->incorporation_code = $incorporation_code;
+        $this->incorporation_code = addslashes($incorporation_code);
         return $this;
     }
 
     /**
      * @return bool
      */
-    public function isStatus(): bool
+    public function isStatus():? bool
     {
         return $this->status;
     }
@@ -181,7 +182,7 @@ class Video
     /**
      * @return \DateTime
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt():? \DateTime
     {
         return $this->created_at;
     }
@@ -199,16 +200,16 @@ class Video
     /**
      * @return User
      */
-    public function getCreatedBy(): User
+    public function getCreatedBy():? User
     {
         return $this->createdBy;
     }
 
     /**
-     * @param User $createdBy
+     * @param UserInterface $createdBy
      * @return Video
      */
-    public function setCreatedBy(User $createdBy): Video
+    public function setCreatedBy(UserInterface $createdBy): Video
     {
         $this->createdBy = $createdBy;
         return $this;
@@ -217,7 +218,7 @@ class Video
     /**
      * @return \DateTime
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt():? \DateTime
     {
         return $this->updated_at;
     }
@@ -235,7 +236,7 @@ class Video
     /**
      * @return \DateTime
      */
-    public function getDeletedAt(): \DateTime
+    public function getDeletedAt():? \DateTime
     {
         return $this->deleted_at;
     }
@@ -253,7 +254,7 @@ class Video
     /**
      * @return User
      */
-    public function getDeletedBy(): User
+    public function getDeletedBy():? User
     {
         return $this->deleted_by;
     }

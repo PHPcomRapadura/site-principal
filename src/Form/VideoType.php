@@ -13,15 +13,9 @@ class VideoType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('slug')
             ->add('description')
             ->add('incorporation_code')
             ->add('status')
-            ->add('created_at')
-            ->add('updated_at')
-            ->add('deleted_at')
-            ->add('createdBy')
-            ->add('deleted_by')
         ;
     }
 
