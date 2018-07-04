@@ -30,9 +30,12 @@ class PartnerController extends Controller
         ];
     }
 
+
     /**
      * @Route("/create", name="partner_create", methods="GET|POST")
      * @Template("admin/partner/create.html.twig")
+     * @param Request $request
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function create(Request $request)
     {
@@ -59,8 +62,22 @@ class PartnerController extends Controller
     }
 
     /**
+     * @Route("/{id}", name="partner_show", methods="GET")
+     * @Template("admin/partner/show.html.twig")
+     * @param Partner $partner
+     * @return array
+     */
+    public function show(Partner $partner)
+    {
+        return ['partner' => $partner];
+    }
+
+    /**
      * @Route("/{id}/edit", name="partner_edit", methods="GET|POST")
      * @Template("admin/partner/edit.html.twig")
+     * @param Request $request
+     * @param Partner $partner
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function edit(Request $request, Partner $partner)
     {
@@ -82,9 +99,20 @@ class PartnerController extends Controller
 
     /**
      * @Route("/{id}", name="partner_delete", methods="DELETE")
+     * @param Request $request
+     * @param Partner $partner
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function delete(Request $request, Partner $partner)
     {
+        $entityManager = $this->getDoctrine()->getManager();
+        $partnerEnt = $entityManager->getRepository(Partner::class)->find($partner->getId());
+
+        if (!$partnerEnt) {
+            $this->addFlash('warning', 'Parceiro não encontrado!');
+            return $this->redirectToRoute('admin_partner_list');
+        }
+
         if ($this->isCsrfTokenValid('delete'.$partner->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($partner);

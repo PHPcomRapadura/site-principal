@@ -3,10 +3,18 @@
 {% block title %}Novo Parceiro{% endblock %}
 
 {% block body_admin %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-    {{ form_end(form) }}
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="nav navbar-right">
+                <a class="btn btn-link" href="{{ path('admin_partner_list') }}">
+                    <i class="fa fa-arrow-circle-left"></i> Voltar para Listagem
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            {{ include('admin/partner/_form.html.twig') }}
+        </div>
+    </div>
 
-    <a href="{{ path('admin_partner_list') }}" class="btn btn-primary">back to list</a>
 {% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Detalhes do parceiro{% endblock %}
+
+{% block body_admin %}
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="nav navbar-right">
+                <a class="btn btn-link" href="{{ path('admin_partner_list') }}">
+                    <i class="fa fa-arrow-circle-left"></i> Voltar para Listagem
+                </a>
+                <a class="btn btn-link" href="{{ path('admin_partner_edit', {"id": partner.id}) }}">
+                    <i class="fa fa-edit"></i> Editar
+                </a>
+                {{ include('admin/partner/_delete_form.html.twig') }}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+            <h2>{{ partner.name }}</h2>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ partner.id }}</td>
+                </tr>
+                <tr>
+                    <th>Slug</th>
+                    <td>{{ partner.slug }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ partner.status ? 'Ativo' : 'Inativo' }}</td>
+                </tr>
+                <tr>
+                    <th>Criado em</th>
+                    <td>{{ partner.createdAt ? partner.createdAt|date('d/m/Y H:i:s') : '' }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+

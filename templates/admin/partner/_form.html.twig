@@ -1,0 +1,43 @@
+{{ form_start(form, {"attr": {"novalidate": "novalidate"}}) }}
+{{ form_row(form._token) }}
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name, {"attr": {"class": "form-control"}}) }}
+            {{ form_errors(form.name) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 form-group">
+            {{ form_label(form.slug) }}
+            {{ form_widget(form.slug, {"attr": {"class": "form-control"}}) }}
+            {{ form_errors(form.slug) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 form-group">
+            {{ form_label(form.type) }}
+            {{ form_widget(form.type) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="ln_solid"></div>
+
+        <button class="btn btn-primary">
+            <i class="fa fa-save"></i> {{ button_label|default('Salvar') }}
+        </button>
+
+        {% if partner.id %}
+            <a href="{{ path('admin_partner_create') }}" class="btn btn-default">
+                <i class="fa fa-plus-circle"></i> Novo Registro
+            </a>
+        {% endif %}
+    </div>
+</div>
