@@ -71,19 +71,6 @@ class Video
      */
     private $updated_at;
 
-    /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $deleted_at;
-
-    /**
-     * @var User
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(name="deleted_by", nullable=true)
-     */
-    private $deleted_by;
-
     public function getId()
     {
         return $this->id;
@@ -148,7 +135,7 @@ class Video
      */
     public function getIncorporationCode():? string
     {
-        return $this->incorporation_code;
+        return stripslashes($this->incorporation_code);
     }
 
     /**
@@ -230,42 +217,6 @@ class Video
     public function setUpdatedAt(\DateTime $updated_at): Video
     {
         $this->updated_at = $updated_at;
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getDeletedAt():? \DateTime
-    {
-        return $this->deleted_at;
-    }
-
-    /**
-     * @param \DateTime $deleted_at
-     * @return Video
-     */
-    public function setDeletedAt(\DateTime $deleted_at): Video
-    {
-        $this->deleted_at = $deleted_at;
-        return $this;
-    }
-
-    /**
-     * @return User
-     */
-    public function getDeletedBy():? User
-    {
-        return $this->deleted_by;
-    }
-
-    /**
-     * @param User $deleted_by
-     * @return Video
-     */
-    public function setDeletedBy(User $deleted_by): Video
-    {
-        $this->deleted_by = $deleted_by;
         return $this;
     }
 }

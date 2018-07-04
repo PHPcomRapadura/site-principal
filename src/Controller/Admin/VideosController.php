@@ -46,6 +46,7 @@ class VideosController extends Controller
             $em->persist($video);
             $em->flush();
 
+            $this->addFlash('success', 'Os dados foram salvos com sucesso.');
             return $this->redirectToRoute('admin_videos_index');
         }
 
@@ -81,6 +82,7 @@ class VideosController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'Os dados foram salvos com sucesso.');
             return $this->redirectToRoute('admin_videos_edit', ['id' => $video->getId()]);
         }
 
@@ -104,6 +106,7 @@ class VideosController extends Controller
             $em->flush();
         }
 
+        $this->addFlash('success', 'O registro foi removido com sucesso.');
         return $this->redirectToRoute('admin_videos_index');
     }
 }

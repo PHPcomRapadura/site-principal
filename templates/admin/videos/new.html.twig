@@ -3,7 +3,17 @@
 {% block title %}Novo Vídeo{% endblock %}
 
 {% block body_admin %}
-    {{ include('admin/videos/_form.html.twig') }}
-
-    <a href="{{ path('admin_videos_index') }}">back to list</a>
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="nav navbar-right">
+                <a class="btn btn-link" href="{{ path('admin_videos_index') }}">
+                    <i class="fa fa-arrow-circle-left"></i> Voltar para Listagem
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            {{ include('admin/videos/_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}
