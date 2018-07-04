@@ -46,9 +46,9 @@ class Video
 
     /**
      * @var boolean
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default": 1})
      */
-    private $status;
+    private $status = true;
 
     /**
      * @var \DateTime

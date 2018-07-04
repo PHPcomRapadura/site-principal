@@ -63,7 +63,7 @@ class User implements UserInterface
 
     /**
      * @var integer
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean", options={"default": 1})
      */
     private $status;
 
