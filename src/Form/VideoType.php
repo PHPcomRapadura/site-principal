@@ -33,6 +33,9 @@ class VideoType extends AbstractType
             ->add('btn_salvar', SubmitType::class, [
                 'label' => 'Salvar'
             ])
+            ->add('btn_consultar', SubmitType::class, [
+                'label' => "Consultar"
+            ])
         ;
     }
 

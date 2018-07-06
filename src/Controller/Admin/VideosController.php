@@ -5,6 +5,9 @@ namespace App\Controller\Admin;
 use App\Entity\Video;
 use App\Form\VideoType;
 use App\Repository\VideoRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,15 +20,50 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class VideosController extends Controller
 {
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+
     /**
      * @Route("/", name="index", methods="GET")
      * @Template("admin/videos/index.html.twig")
+     * @param Request $request
      * @param VideoRepository $videoRepository
      * @return array
      */
-    public function index(VideoRepository $videoRepository)
+    public function index(Request $request, VideoRepository $videoRepository)
     {
-        return ['videos' => $videoRepository->findAll()];
+        $video = new Video;
+        $form = $this->createForm(VideoType::class);
+        $filters = $request->get('video');
+        
+        $queryBuilder = $videoRepository->createQueryBuilder('v')
+            ->addOrderBy('v.title', 'ASC')
+            ->addOrderBy('v.created_at', 'DESC');
+        
+        if (!is_null($filters)) {
+            $video->setTitle($filters['title']);
+
+            $queryBuilder->where('v.title LIKE :title')
+                ->orWhere('v.description LIKE :title')
+                ->setParameter(':title', "%{$filters['title']}%");
+        }
+
+        $form->setData($video);
+
+        $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($queryBuilder));
+        $pagerfanta->setMaxPerPage(3);
+        $pagerfanta->setCurrentPage($request->get('page', 1));
+
+        return [
+            'pager' => $pagerfanta,
+            'rows' => $pagerfanta->getCurrentPageResults(),
+            'form' => $form->createView()
+        ];
     }
 
     /**
