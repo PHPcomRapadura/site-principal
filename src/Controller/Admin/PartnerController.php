@@ -44,6 +44,13 @@ class PartnerController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $partner->getImage();
+            if ($image != null) {
+                $imageName = md5(time()) . "." . $image->guessExtension();
+                $image->move($this->getParameter('path_image'), $imageName);
+                $partner->setImage($imageName);
+            }
+
             $partner->setCreatedBy(new \DateTime("now"));
             $partner->setStatus(1);
 
@@ -85,6 +92,13 @@ class PartnerController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $partner->getImage();
+            if ($image != null) {
+                $imageName = md5(time()) . "." . $image->guessExtension();
+                $image->move($this->getParameter('path_image'), $imageName);
+                $partner->setImage($imageName);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'Parceiro foi atualizado com sucesso!');
@@ -113,7 +127,7 @@ class PartnerController extends Controller
             return $this->redirectToRoute('admin_partner_list');
         }
 
-        if ($this->isCsrfTokenValid('delete'.$partner->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $partner->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($partner);
             $em->flush();

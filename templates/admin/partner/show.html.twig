@@ -19,26 +19,33 @@
 
         <div class="x_content">
             <h2>{{ partner.name }}</h2>
-            <table class="table">
-                <tbody>
-                <tr>
-                    <th>Id</th>
-                    <td>{{ partner.id }}</td>
-                </tr>
-                <tr>
-                    <th>Slug</th>
-                    <td>{{ partner.slug }}</td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td>{{ partner.status ? 'Ativo' : 'Inativo' }}</td>
-                </tr>
-                <tr>
-                    <th>Criado em</th>
-                    <td>{{ partner.createdAt ? partner.createdAt|date('d/m/Y H:i:s') : '' }}</td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="row">
+                <div class="col-md-9">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ partner.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Slug</th>
+                            <td>{{ partner.slug }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ partner.status ? 'Ativo' : 'Inativo' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Criado em</th>
+                            <td>{{ partner.createdAt ? partner.createdAt|date('d/m/Y H:i:s') : '' }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-3">
+                    <img src="{{ (partner.image == null ? path_image ~ 'avatar.png' : path_upload ~ partner.image)  }}" alt="" width="200" height="200">
+                </div>
+            </div>
         </div>
     </div>
 
