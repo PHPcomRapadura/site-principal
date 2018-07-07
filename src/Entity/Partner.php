@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PartnerRepository")
@@ -33,6 +34,7 @@ class Partner
     /**
      * @var string
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Image(mimeTypes={"image/*"}, mimeTypesMessage="Arquivo inválido!")
      */
     private $image;
 
