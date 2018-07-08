@@ -19,32 +19,21 @@ class PartnerRepository extends ServiceEntityRepository
         parent::__construct($registry, Partner::class);
     }
 
-//    /**
-//     * @return Partner[] Returns an array of Partner objects
-//     */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @param array $filters
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getDataProvider(array $filters = [])
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->addOrderBy('p.name', 'ASC')
+            ->addOrderBy('p.created_at', 'DESC');
+        if (!empty($filters)) {
+            $queryBuilder->where('p.name LIKE :name')
+                ->andWhere('p.type = :type')
+                ->setParameter(':name', "%{$filters['name']}%")
+                ->setParameter(':type', "{$filters['type']}");
+        }
+        return $queryBuilder;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Partner
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -36,14 +36,26 @@
                             <td>{{ partner.status ? 'Ativo' : 'Inativo' }}</td>
                         </tr>
                         <tr>
+                            <th>Tipo</th>
+                            <td>{{ partner.type == 'A' ? 'Apoiador' : 'Patrocinador' }}</td>
+                        </tr>
+                        <tr>
                             <th>Criado em</th>
                             <td>{{ partner.createdAt ? partner.createdAt|date('d/m/Y H:i:s') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Criado por</th>
+                            <td>{{ partner.createdBy.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Atualizado em</th>
+                            <td>{{ partner.updatedAt ? partner.updatedAt|date('d/m/Y H:i:s') : '' }}</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="col-md-3">
-                    <img src="{{ (partner.image == null ? path_image ~ 'avatar.png' : path_upload ~ partner.image)  }}" alt="" width="200" height="200">
+                    <img class="img img-responsive img-preview thumbnail" src="{{ (partner.image == null ? path_image ~ 'avatar.png' : path_partner ~ partner.image)  }}" alt="" >
                 </div>
             </div>
         </div>

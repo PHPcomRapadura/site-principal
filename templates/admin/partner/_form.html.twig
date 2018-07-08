@@ -1,9 +1,10 @@
+{% form_theme form with 'bootstrap_3_layout.html.twig' %}
 {{ form_start(form, {"attr": {"novalidate": "novalidate"}}) }}
 {{ form_row(form._token) }}
 
 <div class="col-md-12">
     <div class="row">
-        <div class="col-md-12 form-group">
+        <div class="col-md-12 form-group {{ form.name.vars.errors.count() > 0 ? 'has-error' : '' }}">
             {{ form_label(form.name) }}
             {{ form_widget(form.name, {"attr": {"class": "form-control"}}) }}
             {{ form_errors(form.name) }}
@@ -11,24 +12,22 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12 form-group">
-            {{ form_label(form.slug) }}
-            {{ form_widget(form.slug, {"attr": {"class": "form-control"}}) }}
-            {{ form_errors(form.slug) }}
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12 form-group">
+        <div class="col-md-12 form-group {{ form.type.vars.errors.count() > 0 ? 'has-error' : '' }}">
             {{ form_label(form.type) }}
-            {{ form_widget(form.type) }}
+            {{ form_widget(form.type, {"attr": {"class": "form-control"}}) }}
+            {{ form_errors(form.type) }}
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12 form-group">
+        <div class="col-md-12 form-group {{ form.image.vars.errors.count() > 0 ? 'has-error' : '' }}">
             {{ form_label(form.image) }}
             {{ form_widget(form.image, {"attr": {"class": "form-control"}}) }}
+
+            {% if partner.image != null %}
+                <br>
+                <img src="{{ path_partner ~ partner.image }}" class="img img-responsive img-preview thumbnail"/>
+            {% endif %}
             {{ form_errors(form.image) }}
         </div>
     </div>

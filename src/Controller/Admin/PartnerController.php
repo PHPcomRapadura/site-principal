@@ -4,10 +4,15 @@ namespace App\Controller\Admin;
 
 use App\Entity\Partner;
 use App\Form\PartnerType;
+use App\Repository\PartnerRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class PartnerController
@@ -16,17 +21,38 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 class PartnerController extends Controller
 {
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     /**
      * @Route("/", name="partner_list")
      * @Template("/admin/partner/index.html.twig")
+     * @param Request $request
+     * @param PartnerRepository $partnerRepository
+     * @return array
      */
-    public function index()
+    public function index(Request $request, PartnerRepository $partnerRepository)
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $partners = $entityManager->getRepository(Partner::class)->findAll();
-
+        $partner = new Partner();
+        $form = $this->createForm(PartnerType::class);
+        $filters = $request->get('partner', []);
+        $dataProvider = $partnerRepository->getDataProvider($filters);
+        if (!empty($filters)) {
+            $partner->setName($filters['name']);
+            $partner->setType($filters['type']);
+        }
+        $form->setData($partner);
+        $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($dataProvider));
+        $pagerfanta->setMaxPerPage($this->getParameter('pagination')['per_page']);
+        $pagerfanta->setCurrentPage($request->get('page', 1));
         return [
-            'partners' => $partners
+            'pager' => $pagerfanta,
+            'partners' => $pagerfanta->getCurrentPageResults(),
+            'form' => $form->createView()
         ];
     }
 
@@ -35,9 +61,10 @@ class PartnerController extends Controller
      * @Route("/create", name="partner_create", methods="GET|POST")
      * @Template("admin/partner/create.html.twig")
      * @param Request $request
+     * @param UserInterface $user
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function create(Request $request)
+    public function create(Request $request, UserInterface $user)
     {
         $partner = new Partner();
         $form = $this->createForm(PartnerType::class, $partner);
@@ -47,12 +74,10 @@ class PartnerController extends Controller
             $image = $partner->getImage();
             if ($image != null) {
                 $imageName = md5(time()) . "." . $image->guessExtension();
-                $image->move($this->getParameter('path_image'), $imageName);
+                $image->move($this->getParameter('path_partner'), $imageName);
                 $partner->setImage($imageName);
             }
-
-            $partner->setCreatedBy(new \DateTime("now"));
-            $partner->setStatus(1);
+            $partner->setCreatedBy($user);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($partner);
@@ -95,12 +120,11 @@ class PartnerController extends Controller
             $image = $partner->getImage();
             if ($image != null) {
                 $imageName = md5(time()) . "." . $image->guessExtension();
-                $image->move($this->getParameter('path_image'), $imageName);
+                $image->move($this->getParameter('path_partner'), $imageName);
                 $partner->setImage($imageName);
             }
 
             $this->getDoctrine()->getManager()->flush();
-
             $this->addFlash('success', 'Parceiro foi atualizado com sucesso!');
             return $this->redirectToRoute('admin_partner_list');
         }

@@ -3,5 +3,5 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     globals:
-        path_upload: '/uploads/images/'
         path_image: '/images/'
+        path_partner: '/uploads/partners/'

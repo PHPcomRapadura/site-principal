@@ -21,34 +21,37 @@ class Partner
 
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=70)
+     * @Assert\NotBlank(message="Nome do parceiro não pode estar vazio")
      */
     private $name;
 
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=40)
+     * @Gedmo\Slug(fields={"name"}, updatable=true)
      */
     private $slug;
 
     /**
      * @var string
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, length=100)
      * @Assert\Image(mimeTypes={"image/*"}, mimeTypesMessage="Arquivo inválido!")
      */
     private $image;
 
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=1, options={"fixed" = true})
+     * @Assert\NotBlank(message="Escolha um tipo de parceiro")
      */
     private $type;
 
     /**
-     * @var boolean
-     * @ORM\Column(type="boolean")
+     * @var integer
+     * @ORM\Column(type="boolean", options={"default": 1})
      */
-    private $status;
+    private $status = true;
 
     /**
      * @var \DateTime
@@ -58,8 +61,9 @@ class Partner
     private $created_at;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime")
+     * @var int
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false, name="created_by")
      */
     private $created_by;
 
@@ -70,18 +74,6 @@ class Partner
      *
      */
     private $updated_at;
-
-    /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $deleted_at;
-
-    /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $deleted_by;
 
     public function getId()
     {
@@ -98,7 +90,6 @@ class Partner
 
     /**
      * @param string $name
-     * @return Partner
      */
     public function setName($name)
     {
@@ -115,7 +106,6 @@ class Partner
 
     /**
      * @param string $slug
-     * @return Partner
      */
     public function setSlug($slug)
     {
@@ -132,7 +122,6 @@ class Partner
 
     /**
      * @param string $image
-     * @return Partner
      */
     public function setImage($image)
     {
@@ -149,7 +138,6 @@ class Partner
 
     /**
      * @param string $type
-     * @return Partner
      */
     public function setType($type)
     {
@@ -166,7 +154,6 @@ class Partner
 
     /**
      * @param bool $status
-     * @return Partner
      */
     public function setStatus($status)
     {
@@ -183,7 +170,6 @@ class Partner
 
     /**
      * @param \DateTime $created_at
-     * @return Partner
      */
     public function setCreatedAt($created_at)
     {
@@ -191,7 +177,7 @@ class Partner
     }
 
     /**
-     * @return \DateTime
+     * @return int
      */
     public function getCreatedBy()
     {
@@ -199,8 +185,7 @@ class Partner
     }
 
     /**
-     * @param \DateTime $created_by
-     * @return Partner
+     * @param int $created_by
      */
     public function setCreatedBy($created_by)
     {
@@ -217,44 +202,9 @@ class Partner
 
     /**
      * @param \DateTime $updated_at
-     * @return Partner
      */
     public function setUpdatedAt($updated_at)
     {
         $this->updated_at = $updated_at;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getDeletedAt()
-    {
-        return $this->deleted_at;
-    }
-
-    /**
-     * @param \DateTime $deletet_at
-     * @return Partner
-     */
-    public function setDeletedAt($deleted_at)
-    {
-        $this->deleted_at = $deleted_at;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getDeletedBy()
-    {
-        return $this->deleted_by;
-    }
-
-    /**
-     * @param \DateTime $deleted_by
-     * @return Partner
-     */
-    public function setDeletedBy($deleted_by)
-    {
-        $this->deleted_by = $deleted_by;
     }
 }
