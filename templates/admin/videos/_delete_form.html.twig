@@ -1,6 +1,6 @@
-<form method="post" class="pull-right" action="{{ path('admin_videos_delete', {'id': row.id}) }}" onsubmit="return confirm('Deseja realmente deletar este registro?');">
+<form method="post" class="pull-right" action="{{ path('admin_videos_delete', {'id': video.id}) }}" onsubmit="return confirm('Deseja realmente deletar este registro?');">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ row.id) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ video.id) }}">
 
     {% if gridButton is defined and gridButton == true %}
         <button class="btn btn-danger btn-sm">

@@ -27,7 +27,6 @@ class VideosController extends Controller
         $this->entityManager = $entityManager;
     }
 
-
     /**
      * @Route("/", name="index", methods="GET")
      * @Template("admin/videos/index.html.twig")
@@ -39,24 +38,17 @@ class VideosController extends Controller
     {
         $video = new Video;
         $form = $this->createForm(VideoType::class);
-        $filters = $request->get('video');
-        
-        $queryBuilder = $videoRepository->createQueryBuilder('v')
-            ->addOrderBy('v.title', 'ASC')
-            ->addOrderBy('v.created_at', 'DESC');
-        
-        if (!is_null($filters)) {
-            $video->setTitle($filters['title']);
+        $filters = $request->get('video', []);
+        $dataProvider = $videoRepository->getDataProvider($filters);
 
-            $queryBuilder->where('v.title LIKE :title')
-                ->orWhere('v.description LIKE :title')
-                ->setParameter(':title', "%{$filters['title']}%");
+        if (!empty($filters)) {
+            $video->setTitle($filters['title']);
         }
 
         $form->setData($video);
 
-        $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($queryBuilder));
-        $pagerfanta->setMaxPerPage(3);
+        $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($dataProvider));
+        $pagerfanta->setMaxPerPage($this->getParameter('pagination')['per_page']);
         $pagerfanta->setCurrentPage($request->get('page', 1));
 
         return [
@@ -70,6 +62,7 @@ class VideosController extends Controller
      * @Route("/new", name="new", methods="GET|POST")
      * @Template("admin/videos/new.html.twig")
      * @param Request $request
+     * @param UserInterface $user
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function new(Request $request, UserInterface $user)

@@ -19,10 +19,9 @@
                     {{ form_errors(form.title) }}
                 </div>
                 <div class="col-md-2 form-group" style="margin-top: 26px">
-                    {{ form_widget(form.btn_consultar, {"attr": {"class": "btn btn-default"}}) }}
-                    {#<button type="submit" class="btn btn-primary">#}
-                        {#<i class="fa fa-search"></i> Consultar#}
-                    {#</button>#}
+                    <button type="submit" class="btn btn-default">
+                        <i class="fa fa-search"></i> Consultar
+                    </button>
                 </div>
             </div>
 
@@ -37,21 +36,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for row in rows %}
+                {% for video in rows %}
                     <tr>
-                        <td class="text-center">{{ row.createdAt ? row.createdAt|date('d/m/Y H:i') : '' }}</td>
+                        <td class="text-center">{{ video.createdAt ? video.createdAt|date('d/m/Y H:i') : '' }}</td>
                         <td>
-                            <a style="display: block" href="{{ path('admin_videos_show', {"id": row.id}) }}">
-                                {{ row.title }}
+                            <a style="display: block" href="{{ path('admin_videos_show', {"id": video.id}) }}">
+                                {{ video.title }}
                             </a>
                         </td>
-                        <td class="text-center">{{ row.status ? 'Ativo' : 'Inativo' }}</td>
+                        <td class="text-center">{{ video.status ? 'Ativo' : 'Inativo' }}</td>
                         <td class="text-center">
                             <div class="btn-group" role="group" aria-label="...">
-                                <a class="btn btn-default btn-sm" href="{{ path('admin_videos_show', {'id': row.id}) }}">
+                                <a class="btn btn-default btn-sm" href="{{ path('admin_videos_show', {'id': video.id}) }}">
                                     <i class="fa fa-eye"></i> Ver
                                 </a>
-                                <a class="btn btn-warning btn-sm" href="{{ path('admin_videos_edit', {'id': row.id}) }}">
+                                <a class="btn btn-warning btn-sm" href="{{ path('admin_videos_edit', {'id': video.id}) }}">
                                     <i class="fa fa-edit"></i> Editar
                                 </a>
                                 {{ include('admin/videos/_delete_form.html.twig', {"gridButton": true}) }}

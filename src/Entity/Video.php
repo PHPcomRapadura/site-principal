@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\VideoRepository")
@@ -22,6 +23,13 @@ class Video
     /**
      * @var string
      * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 60,
+     *      minMessage = "Título deve ter pelo menos {{ limit }} caracteres.",
+     *      maxMessage = "Título deve ter no máximo {{ limit }} caracteres."
+     * )
      */
     private $title;
 
@@ -41,12 +49,14 @@ class Video
     /**
      * @var string
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $incorporation_code;
 
     /**
      * @var boolean
      * @ORM\Column(type="boolean", options={"default": 1})
+     * @Assert\NotBlank()
      */
     private $status = true;
 
@@ -124,7 +134,7 @@ class Video
      * @param string $description
      * @return Video
      */
-    public function setDescription(string $description): Video
+    public function setDescription(?string $description): Video
     {
         $this->description = $description;
         return $this;
@@ -142,7 +152,7 @@ class Video
      * @param string $incorporation_code
      * @return Video
      */
-    public function setIncorporationCode(string $incorporation_code): Video
+    public function setIncorporationCode(?string $incorporation_code): Video
     {
         $this->incorporation_code = addslashes($incorporation_code);
         return $this;

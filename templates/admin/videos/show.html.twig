@@ -17,46 +17,50 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <h2>{{ video.title }}</h2>
-            <table class="table">
-                <tbody>
-                <tr>
-                    <th>ID</th>
-                    <td>{{ video.id }}</td>
-                </tr>
-                <tr>
-                    <th>Slug</th>
-                    <td>{{ video.slug }}</td>
-                </tr>
-                <tr>
-                    <th>Descrição</th>
-                    <td>{{ video.description }}</td>
-                </tr>
-                <tr>
-                    <th>Código de Incorporação</th>
-                    <td>{{ video.incorporationCode }}</td>
-                </tr>
-                <tr>
-                    <th>Registro Ativo ?</th>
-                    <td>{{ video.status ? 'Sim' : 'Não' }}</td>
-                </tr>
-                <tr>
-                    <th>Criando Por</th>
-                    <td>{{ video.createdBy.name }}</td>
-                </tr>
-                <tr>
-                    <th>Criando Em</th>
-                    <td>{{ video.createdAt ? video.createdAt|date('d/m/Y H:i:s') : '' }}</td>
-                </tr>
-                <tr>
-                    <th>Última Atualização em</th>
-                    <td>{{ video.updatedAt ? video.updatedAt|date('d/m/Y H:i:s') : '' }}</td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="col-md-7">
+                <h2>{{ video.title }}</h2>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <td>{{ video.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Slug</th>
+                        <td>{{ video.slug }}</td>
+                    </tr>
+                    <tr>
+                        <th>Descrição</th>
+                        <td>{{ video.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Código de Incorporação</th>
+                        <td>{{ video.incorporationCode }}</td>
+                    </tr>
+                    <tr>
+                        <th>Registro Ativo ?</th>
+                        <td>{{ video.status ? 'Sim' : 'Não' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Criando Por</th>
+                        <td>{{ video.createdBy.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Criando Em</th>
+                        <td>{{ video.createdAt ? video.createdAt|date('d/m/Y H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Última Atualização em</th>
+                        <td>{{ video.updatedAt ? video.updatedAt|date('d/m/Y H:i:s') : '' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <h2>Pré-visualização</h2>
-            {{ video.incorporationCode|raw }}
+            <div class="col-md-5">
+                <h2>Pré-visualização</h2>
+                {{ video.incorporationCode|raw }}
+            </div>
         </div>
     </div>
 {% endblock %}
