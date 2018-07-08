@@ -1,0 +1,62 @@
+{% form_theme form with 'bootstrap_3_layout.html.twig' %}
+{{ form_start(form, {"attr": {"novalidate": "novalidate"}}) }}
+{{ form_row(form._token) }}
+
+<div class="col-md-6">
+    <div class="row">
+        <div class="col-md-12 form-group {{ form.title.vars.errors.count() > 0 ? 'has-error' : '' }}">
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title, {"attr": {"class": "form-control"}}) }}
+            {{ form_errors(form.title) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 form-group {{ form.description.vars.errors.count() > 0 ? 'has-error' : '' }}">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description, {"attr": {"class": "form-control", "style":"height: 120px;"}}) }}
+            {{ form_errors(form.description) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 form-group">
+            {{ form_widget(form.status) }}
+            {{ form_label(form.status) }}
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="row">
+        <div class="col-md-12 form-group {{ form.incorporation_code.vars.errors.count() > 0 ? 'has-error' : '' }}">
+            {{ form_label(form.incorporation_code) }}
+            {{ form_widget(form.incorporation_code, {"attr": {"class": "form-control", "style":"height: 189px;"}}) }}
+            {{ form_errors(form.incorporation_code) }}
+        </div>
+    </div>
+    {% if video.id %}
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <h3>Pré-visualização do Vídeo</h3>
+                {{ video.incorporationCode|raw }}
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="ln_solid"></div>
+
+        <button class="btn btn-primary">
+            <i class="fa fa-save"></i> {{ button_label|default('Salvar') }}
+        </button>
+
+        {% if video.id %}
+            <a href="{{ path('admin_videos_new') }}" class="btn btn-default">
+                <i class="fa fa-plus-circle"></i> Novo Registro
+            </a>
+        {% endif %}
+    </div>
+</div>
