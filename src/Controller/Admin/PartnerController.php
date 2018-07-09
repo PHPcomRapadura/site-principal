@@ -143,14 +143,6 @@ class PartnerController extends Controller
      */
     public function delete(Request $request, Partner $partner)
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $partnerEnt = $entityManager->getRepository(Partner::class)->find($partner->getId());
-
-        if (!$partnerEnt) {
-            $this->addFlash('warning', 'Parceiro não encontrado!');
-            return $this->redirectToRoute('admin_partner_list');
-        }
-
         if ($this->isCsrfTokenValid('delete' . $partner->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($partner);

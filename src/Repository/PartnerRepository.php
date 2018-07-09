@@ -28,12 +28,16 @@ class PartnerRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('p')
             ->addOrderBy('p.name', 'ASC')
             ->addOrderBy('p.created_at', 'DESC');
-        if (!empty($filters)) {
+        if (!empty($filters['name'])) {
             $queryBuilder->where('p.name LIKE :name')
-                ->andWhere('p.type = :type')
-                ->setParameter(':name', "%{$filters['name']}%")
+                ->setParameter(':name', "%{$filters['name']}%");
+        }
+
+        if (!empty($filters['type'])) {
+            $queryBuilder->where('p.type = :type')
                 ->setParameter(':type', "{$filters['type']}");
         }
+
         return $queryBuilder;
     }
 }

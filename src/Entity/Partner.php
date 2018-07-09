@@ -35,8 +35,9 @@ class Partner
 
     /**
      * @var string
-     * @ORM\Column(type="string", nullable=true, length=100)
+     * @ORM\Column(type="string", length=100)
      * @Assert\Image(mimeTypes={"image/*"}, mimeTypesMessage="Arquivo inválido!")
+     * @Assert\NotBlank(message="Logo do parceiro nao pode estar vazia")
      */
     private $image;
 

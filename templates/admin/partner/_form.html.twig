@@ -23,7 +23,6 @@
         <div class="col-md-12 form-group {{ form.image.vars.errors.count() > 0 ? 'has-error' : '' }}">
             {{ form_label(form.image) }}
             {{ form_widget(form.image, {"attr": {"class": "form-control"}}) }}
-
             {% if partner.image != null %}
                 <br>
                 <img src="{{ path_partner ~ partner.image }}" class="img img-responsive img-preview thumbnail"/>
