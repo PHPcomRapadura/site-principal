@@ -27,7 +27,7 @@
                 <div class="col-md-2 form-group" style="margin-top: 26px">
                     {{ form_widget(form.btn_consultar, {"attr": {"class": "btn btn-primary"}}) }}
                 </div>
-                {{ form_end(form) }}
+                {{ form_end(form, {'render_rest': false}) }}
             </div>
 
             <hr>
