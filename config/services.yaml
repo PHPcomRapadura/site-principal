@@ -2,8 +2,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'pt_BR'
+    path_partner: '%kernel.project_dir%/public/uploads/partners'
     pagination:
-      per_page: 30
+        per_page: 30
 
 services:
     _defaults:

@@ -50,3 +50,6 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
+
+# images of partners
+/public/uploads/partners/*
