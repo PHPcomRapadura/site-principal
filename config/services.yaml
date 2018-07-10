@@ -2,12 +2,11 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'pt_BR'
+    path_partner: '%kernel.project_dir%/public/uploads/partners'
     pagination:
         per_page: 30
-    path_partner: '%kernel.project_dir%/public/uploads/partners'
 
 services:
-    # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.

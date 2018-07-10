@@ -27,7 +27,25 @@
                     </a>
                 </div>
 
-                <div class="clearfix"></div>
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>Site/CMS</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a href="{{ path('admin_videos_index') }}"><i class="fa fa-tv"></i> RapaduraTV</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu_section">
+                            <h3>Sistema</h3>
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-user"></i> Usuários</a></li>
+                                <li><a href="{{ path('admin_settings') }}"><i class="fa fa-cogs"></i> Configurações</a></li>
+                                <li><a href="{{ path('logout') }}"><i class="fa fa-sign-out"></i> Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
                 <!-- menu profile quick info -->
                 <div class="profile clearfix">
