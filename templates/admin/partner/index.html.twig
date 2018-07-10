@@ -25,10 +25,9 @@
                     {{ form_errors(form.type) }}
                 </div>
                 <div class="col-md-2 form-group" style="margin-top: 26px">
-                    <button type="submit" class="btn btn-default">
-                        <i class="fa fa-search"></i> Consultar
-                    </button>
+                    {{ form_widget(form.btn_consultar, {"attr": {"class": "btn btn-primary"}}) }}
                 </div>
+                {{ form_end(form) }}
             </div>
 
             <hr>
@@ -37,7 +36,6 @@
                 <tr class="headings">
                     <th style="width: 160px" class="text-center">Criado em</th>
                     <th>Nome</th>
-                    <th>Slug</th>
                     <th>Tipo</th>
                     <th style="width: 100px" class="text-center">Status</th>
                     <th style="width: 180px" class="text-center">Ações</th>
@@ -48,7 +46,6 @@
                     <tr>
                         <td class="text-center">{{ partner.createdAt ? partner.createdAt|date('d/m/Y H:i') : '' }}</td>
                         <td>{{ partner.name }}</td>
-                        <td>{{ partner.slug }}</td>
                         <td>{{ partner.type == 'A' ? 'Apoiador' : 'Patrocinador' }}</td>
                         <td class="text-center">{{ partner.status ? 'Ativo' : 'Inativo' }}</td>
                         <td class="text-center">
