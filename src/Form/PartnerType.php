@@ -21,7 +21,7 @@ class PartnerType extends AbstractType
             ])
             ->add('type', ChoiceType::class, [
                 "label" => "Tipo",
-                'choices' => ['' => '', 'Patrocinador' => 'P', 'Apoiador' => 'A'],
+                'choices' => ['Selecione' => '', 'Patrocinador' => 'P', 'Apoiador' => 'A'],
                 'required' => true
             ])
             ->add('image', FileType::class, [
