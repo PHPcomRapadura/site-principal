@@ -6,6 +6,8 @@
 - [docker](https://docs.docker.com/install/)
 - [docker-compose](https://docs.docker.com/compose/install/)
 
+### 1 - Configurações gerais do Docker e Variáveis de Ambiente
+
 Para preparar o projeto para rodar rode os comandos abaixo:
 ```
 $ cp .env.dist .env
@@ -15,19 +17,33 @@ Estas instruções criarão cópias dos arquivos de configuração do projeto e 
 Os dois arquivos vêm com configurações padrão funcionais para usar em sistemas operacionais que não tenham outros serviços.
 Se precisar edite-os de forma a ficarem compatíveis com alguma peculiaridade do seu sistema operacional.
 
+### 2 - Subir os containers com Servidor WEB e Banco de Dados
+
 Para dar start no projeto é só entrar no **diretório root** do projeto executar o seguinte comando:
 ```
 $ docker-compose up -d
 ```
+
+### 3 - Instalação das dependências da aplicação
 
 Para instalar as dependências pode usar o comando:
 ```
 $ docker exec phpcomrapadura-app composer install
 ```
 
-Se quiser parar a execução do projeto é só rodar o seguinte comando:
+### 4 - Executando as Migrations
+
+Caso os containers subam com sucesso, execute as migrations para criação das tabelas necessárias para a aplicação:
+
 ```
-$ docker-compose stop
+$ docker exec phpcomrapadura-app bin/console doctrine:migrations:migrate
+``` 
+
+### 5 - Executando as Fixtures
+
+Para inserir os dados iniciais em algumas tabelas, execute o comando:
+```
+$ docker exec phpcomrapadura-app bin/console doctrine:fixtures:load
 ```
 
 Caso queria finalizar os serviços é só rodar o seguinte comando. Isso irá remover e parar os serviços/containers:

@@ -1,0 +1,72 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}RapaduraTV{% endblock %}
+
+{% block body_admin %}
+    <div class="x_panel">
+        <div class="x_title">
+            <a class="btn btn-primary" href="{{ path('admin_videos_new') }}">
+                <i class="fa fa-plus-circle"></i> Adicionar
+            </a>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            {{ form_start(form, {"method": "get", "attr": {"novalidate": "novalidate"}}) }}
+                {{ form_widget(form._token) }}
+
+                <div class="col-md-4 form-group">
+                    {{ form_label(form.title) }}
+                    {{ form_widget(form.title, {"attr": {"class": "form-control"}}) }}
+                    {{ form_errors(form.title) }}
+                </div>
+                <div class="col-md-2 form-group" style="margin-top: 26px">
+                    {{ form_widget(form.btn_consultar, {"attr": {"class": "btn btn-default"}}) }}
+                </div>
+            {{ form_end(form, {'render_rest': false}) }}
+
+            <hr>
+            <table class="table table-striped table-bordered jambo_table bulk_action">
+                <thead>
+                <tr class="headings">
+                    <th style="width: 160px" class="text-center">Criado em</th>
+                    <th>Título</th>
+                    <th style="width: 100px" class="text-center">Status</th>
+                    <th style="width: 210px" class="text-center">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for video in rows %}
+                    <tr>
+                        <td class="text-center">{{ video.createdAt ? video.createdAt|date('d/m/Y H:i') : '' }}</td>
+                        <td>
+                            <a style="display: block" href="{{ path('admin_videos_show', {"id": video.id}) }}">
+                                {{ video.title }}
+                            </a>
+                        </td>
+                        <td class="text-center">{{ video.status ? 'Ativo' : 'Inativo' }}</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a class="btn btn-default btn-sm" href="{{ path('admin_videos_show', {'id': video.id}) }}">
+                                    <i class="fa fa-eye"></i> Ver
+                                </a>
+                                <a class="btn btn-warning btn-sm" href="{{ path('admin_videos_edit', {'id': video.id}) }}">
+                                    <i class="fa fa-edit"></i> Editar
+                                </a>
+                                {{ include('admin/videos/_delete_form.html.twig', {"gridButton": true}) }}
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="10">Nenhum registro encontrado.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="pagerfanta text-center">
+                {{ pagerfanta(pager, 'twitter_bootstrap3') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

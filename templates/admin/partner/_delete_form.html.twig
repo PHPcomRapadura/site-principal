@@ -1,0 +1,14 @@
+<form method="post" class="pull-right" action="{{ path('admin_partner_delete', {'id': partner.id}) }}" onsubmit="return confirm('Deseja realmente deletar este registro?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+
+    {% if gridButton is defined and gridButton == true %}
+        <button class="btn btn-danger btn-sm">
+            <i class="fa fa-trash"></i>
+        </button>
+    {% else  %}
+        <button class="btn btn-link" style="color: #a94442">
+            <i class="fa fa-trash"></i> Remover
+        </button>
+    {% endif  %}
+</form>

@@ -1,0 +1,20 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Atualizando Vídeo{% endblock %}
+
+{% block body_admin %}
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="nav navbar-right">
+                <a class="btn btn-link" href="{{ path('admin_videos_index') }}">
+                    <i class="fa fa-arrow-circle-left"></i> Voltar para Listagem
+                </a>
+                {{ include('admin/videos/_delete_form.html.twig') }}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            {{ include('admin/videos/_form.html.twig', {'button_label': 'Atualizar'}) }}
+        </div>
+    </div>
+{% endblock %}

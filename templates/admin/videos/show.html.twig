@@ -1,0 +1,66 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Detalhes do Video{% endblock %}
+
+{% block body_admin %}
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="nav navbar-right">
+                <a class="btn btn-link" href="{{ path('admin_videos_index') }}">
+                    <i class="fa fa-arrow-circle-left"></i> Voltar para Listagem
+                </a>
+                <a class="btn btn-link" href="{{ path('admin_videos_edit', {"id": video.id}) }}">
+                    <i class="fa fa-edit"></i> Editar
+                </a>
+                {{ include('admin/videos/_delete_form.html.twig') }}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="col-md-7">
+                <h2>{{ video.title }}</h2>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <td>{{ video.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Slug</th>
+                        <td>{{ video.slug }}</td>
+                    </tr>
+                    <tr>
+                        <th>Descrição</th>
+                        <td>{{ video.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Código de Incorporação</th>
+                        <td>{{ video.incorporationCode }}</td>
+                    </tr>
+                    <tr>
+                        <th>Registro Ativo ?</th>
+                        <td>{{ video.status ? 'Sim' : 'Não' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Criando Por</th>
+                        <td>{{ video.createdBy.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Criando Em</th>
+                        <td>{{ video.createdAt ? video.createdAt|date('d/m/Y H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Última Atualização em</th>
+                        <td>{{ video.updatedAt ? video.updatedAt|date('d/m/Y H:i:s') : '' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-5">
+                <h2>Pré-visualização</h2>
+                {{ video.incorporationCode|raw }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
